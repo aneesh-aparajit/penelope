@@ -1,0 +1,29 @@
+entry: author
+
+limits:
+  maxHops: 12
+  stepTimeout: 30m
+  idleTimeout: 5m
+
+agents:
+  author:
+    cli: claude
+    model: opus
+    role: Writes and revises the spec in docs/spec.md
+    soul: souls/author.md
+    canMessage: [ reviewer ]
+    maxRetries: 1
+
+  reviewer:
+    cli: claude
+    role: Reviews the spec and the implementation against the acceptance criteria
+    soul: souls/reviewer.md
+    canMessage: [ author, implementer ]
+    maxRetries: 1
+
+  implementer:
+    cli: claude
+    role: Implements the approved spec on the run's branch
+    soul: souls/implementer.md
+    canMessage: [ reviewer, done ]
+    maxRetries: 1

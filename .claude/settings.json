@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./penelope signal --session-id \"$PENELOPE_SESSION_ID\" --workflow-id \"$PENELOPE_WF_ID\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
